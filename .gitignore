@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+venv/
+env/
+
+# ⚠️ MCP 敏感配置
+mcp.json
+git-client/config.json
+db-client/db_config.json
+memory-client/memory.db
+
+# 日志
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

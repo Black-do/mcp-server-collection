@@ -1,0 +1,14 @@
+{
+    "default": "dev_db",
+    "connections": {
+      "dev_db": {
+        "name": "开发数据库",
+        "type": "postgresql",
+        "host": "localhost",
+        "port": 5432,
+        "database": "填写数据库名",
+        "user": "填写用户名",
+        "password": "填写密码"
+      }
+    }
+  }
