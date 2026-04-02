@@ -297,4 +297,4 @@ aiomysql>=0.2.0    # MySQL
 
 - 📚 主项目：[README](../README.md)
 - 📚 安装指南：[docs/installation.md](../docs/installation.md)
-- 💬 Issues: [GitHub Issues](https://github.com/<YOUR_USERNAME>/mcp-server-collection/issues)
+- 💬 Issues: [GitHub Issues](https://github.com/Black-do/mcp-server-collection/issues)

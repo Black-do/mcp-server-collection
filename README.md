@@ -363,7 +363,7 @@ git config --global core.quotepath false
 ## 📞 联系方式
 
 - 📧 Email: your.locc233@outlook.com
-- 💬 Issues: [GitHub Issues](https://github.com/black-do/mcp-server-collection/issues)
+- 💬 Issues: [GitHub Issues](https://github.com/Black-do/mcp-server-collection/issues)
 
 ---
 
