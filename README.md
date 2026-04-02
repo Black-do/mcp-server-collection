@@ -1,5 +1,7 @@
 # 🤖 MCP Server Collection
 
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+
 个人开发的 MCP（Model Context Protocol）服务器集合，用于 Trae、Cursor 等 AI 编辑器，覆盖文件、HTTP、Git、数据库、记忆等全场景。
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
