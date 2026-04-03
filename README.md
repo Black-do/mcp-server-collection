@@ -1,5 +1,7 @@
 # 🤖 MCP Server Collection
 
+![Version](https://img.shields.io/badge/Version-1.1.0-blue.svg)
+
 个人开发的 MCP（Model Context Protocol）服务器集合，用于 Trae、Cursor 等 AI 编辑器，覆盖文件、HTTP、Git、数据库、记忆等全场景。
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
@@ -468,12 +470,12 @@ Filesystem MCP 使用官方 npm 包，遵循其原有许可证。
 
 详见 [CHANGELOG.md](CHANGELOG.md)
 
-### v1.1.0 (2026-04-02)
+### v1.1.0 (2026-04-03)
 - ✨ Git Client 新增多项目支持
 - ✨ 新增 `list_projects` 和 `get_current_branch` 工具
 - 📝 更新文档，突出多项目功能
 
-### v1.0.0 (2026-04-01)
+### v1.0.0 (2026-04-02)
 - 🎉 初始版本发布
 - ✨ HTTP/Git/Database/Memory Client 自研 MCP
 - 🔌 集成官方 Filesystem MCP
