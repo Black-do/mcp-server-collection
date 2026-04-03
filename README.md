@@ -1,12 +1,11 @@
 # 🤖 MCP Server Collection
 
-![License](https://img.shields.io/badge/License-MIT-green.svg)
-
 个人开发的 MCP（Model Context Protocol）服务器集合，用于 Trae、Cursor 等 AI 编辑器，覆盖文件、HTTP、Git、数据库、记忆等全场景。
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![Status](https://img.shields.io/badge/Status-Stable-brightgreen.svg)
+![Version](https://img.shields.io/badge/Version-1.1.0-blue.svg)
 
 ---
 
@@ -27,18 +26,22 @@
 
 ## ✨ 功能特性
 
-| MCP | 功能 | 状态 |
-| :--- | :--- | :--- |
-| **📁 Filesystem** | 读写本地文件 | ✅ 稳定 |
-| **🌐 HTTP Client** | HTTP 请求测试，支持本地和网络 API | ✅ 稳定 |
-| **🔀 Git Client** | Git 状态、历史、分支查询 | ✅ 稳定 |
-| **🗄️ Database Client** | 多数据库支持（PostgreSQL + MySQL） | ✅ 稳定 |
-| **🧠 Memory Client** | 长期记忆存储，记住个人偏好 | ✅ 稳定 |
+### MCP 服务器列表
+
+| MCP | 功能 | 状态 | 来源 |
+| :--- | :--- | :--- | :--- |
+| **📁 Filesystem** | 读写本地文件 | ✅ 稳定 | 🔌 官方 npm 包 |
+| **🌐 HTTP Client** | HTTP 请求测试，支持本地和网络 API | ✅ 稳定 | 💻 自研 |
+| **🔀 Git Client** | Git 状态、历史、分支查询（支持多项目） | ✅ 稳定 | 💻 自研 |
+| **🗄️ Database Client** | 多数据库支持（PostgreSQL + MySQL） | ✅ 稳定 | 💻 自研 |
+| **🧠 Memory Client** | 长期记忆存储，记住个人偏好 | ✅ 稳定 | 💻 自研 |
+
+> 💡 **说明：** 🔌 表示使用官方/第三方包，💻 表示本项目自研
 
 ### 核心优势
 
 - ✅ **完全免费** - 无订阅费，无 API 费用
-- ✅ **国内可用** - 无需特殊网络，全部本地运行
+- ✅ **国内可用** - 自研模块无需特殊网络，全部本地运行
 - ✅ **配置灵活** - 每个 MCP 独立配置，互不影响
 - ✅ **安全可控** - 代码开源，数据本地存储
 - ✅ **易于扩展** - 模块化设计，可快速添加新 MCP
@@ -50,39 +53,37 @@
 ### 1. 克隆项目
 
 ```bash
-git clone https://github.com/你的用户名/mcp-server-collection.git
+git clone https://github.com/Black-do/mcp-server-collection.git
 cd mcp-server-collection
 ```
 
 ### 2. 安装依赖
 
 ```bash
-# HTTP Client
+# 自研 MCP 依赖
 pip install -r http-client/requirements.txt
-
-# Git Client
 pip install -r git-client/requirements.txt
-
-# Database Client
 pip install -r db-client/requirements.txt
-
-# Memory Client
 pip install -r memory-client/requirements.txt
 ```
 
-### 3. 配置数据库（可选）
+### 3. 配置各 MCP
 
 ```bash
-cd db-client
-cp db_config.example.json db_config.json
-# 编辑 db_config.json 填入数据库信息
+# 1. 复制配置模板
+cp mcp.json.example mcp.json
+cp git-client/config.json.example git-client/config.json
+cp db-client/db_config.example.json db-client/db_config.json
+
+# 2. 编辑配置文件，替换占位符为你的实际路径
+# 3. ⚠️ 不要将含个人路径的配置文件提交到 Git
 ```
 
 ### 4. 配置 Trae/Cursor
 
 1. 打开编辑器设置
 2. 找到 MCP 配置文件（`MCP: Open Config File`）
-3. 复制 `mcp.json.example` 内容，修改路径
+3. 复制 `mcp.json` 内容
 4. 保存并重启编辑器
 
 ### 5. 验证
@@ -96,35 +97,39 @@ cp db_config.example.json db_config.json
 ```
 mcp-server-collection/
 ├── README.md                    # 本文件
+├── LICENSE                      # MIT 开源协议
 ├── .gitignore                   # Git 忽略配置
 ├── mcp.json.example             # MCP 配置模板
+├── CHANGELOG.md                 # 更新日志
 ├── docs/
 │   ├── installation.md          # 详细安装文档
 │   └── usage.md                 # 使用指南
 │
-├── http-client/                 # HTTP 客户端 MCP
-│   ├── http_mcp.py              # 主代码
-│   ├── requirements.txt         # Python 依赖
-│   ├── config.json              # 配置文件
-│   └── README.md                # 详细说明
+├── http-client/                 # 🌐 HTTP 客户端 MCP（自研）
+│   ├── README.md
+│   ├── http_mcp.py
+│   ├── requirements.txt
+│   └── config.json
 │
-├── git-client/                  # Git 客户端 MCP
+├── git-client/                  # 🔀 Git 客户端 MCP（自研）
+│   ├── README.md
 │   ├── git_mcp.py
 │   ├── requirements.txt
 │   ├── config.json
-│   └── README.md
+│   └── config.json.example
 │
-├── db-client/                   # 数据库客户端 MCP
+├── db-client/                   # 🗄️ 数据库客户端 MCP（自研）
+│   ├── README.md
 │   ├── db_mcp.py
 │   ├── requirements.txt
-│   ├── db_config.json           # ⚠️ 不提交 Git
-│   ├── db_config.example.json   # ✅ 配置模板
-│   └── README.md
+│   ├── db_config.json
+│   └── db_config.example.json
 │
-└── memory-client/               # 记忆 MCP
+└── memory-client/               # 🧠 记忆 MCP（自研）
+    ├── README.md
     ├── memory_mcp.py
     ├── requirements.txt
-    └── README.md
+    └── memory.db
 ```
 
 ---
@@ -181,17 +186,22 @@ cp mcp.json.example mcp.json
 
 | 系统 | 格式 | 示例 |
 | :--- | :--- | :--- |
-| **Windows** | 正斜杠 | `D:/MCPServer/http-client/http_mcp.py` |
-| **Windows** | 双反斜杠 | `D:\\MCPServer\\http-client\\http_mcp.py` |
+| **Windows** | 正斜杠 | `D:/Workspace/MCPServer/http-client/http_mcp.py` |
+| **Windows** | 双反斜杠 | `D:\\Workspace\\MCPServer\\http-client\\http_mcp.py` |
 | **Mac/Linux** | 正斜杠 | `/Users/username/MCPServer/http-client/http_mcp.py` |
 
-> ⚠️ **不要使用单反斜杠** `D:\...`，在 JSON 中会被转义
+> ⚠️ **不要使用单反斜杠** `D:\Workspace\...`，在 JSON 中会被转义
 
 ### 3. mcp.json.example 模板
 
 ```json
 {
   "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "<YOUR_PROJECT_PATH>"],
+      "disabled": false
+    },
     "http-client": {
       "command": "python",
       "args": ["<YOUR_PATH>/http-client/http_mcp.py"],
@@ -211,11 +221,6 @@ cp mcp.json.example mcp.json
       "command": "python",
       "args": ["<YOUR_PATH>/memory-client/memory_mcp.py"],
       "disabled": false
-    },
-    "filesystem": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "<YOUR_PROJECT_PATH>"],
-      "disabled": false
     }
   }
 }
@@ -225,10 +230,69 @@ cp mcp.json.example mcp.json
 
 | MCP | 配置文件 | 说明 |
 | :--- | :--- | :--- |
+| **Filesystem** | `mcp.json` | 官方 npm 包，配置项目路径 |
 | **http-client** | `http-client/config.json` | 可选，配置超时等参数 |
-| **git-client** | `git-client/config.json` | **必填**，配置 Git 项目路径 |
+| **git-client** | `git-client/config.json` | **必填**，配置 Git 项目路径（支持多项目） |
 | **db-client** | `db-client/db_config.json` | **必填**，配置数据库连接（从 example 复制） |
 | **memory-client** | 无需配置 | 自动创建 memory.db |
+
+---
+
+## 🔌 外部依赖说明
+
+以下 MCP 服务器使用官方或第三方包，需要单独配置：
+
+### Filesystem MCP（官方 npm 包）
+
+**功能：** 读取和写入本地文件，让 AI 能够理解项目代码结构。
+
+**来源：** [Model Context Protocol 官方仓库](https://github.com/modelcontextprotocol/servers)
+
+**安装方式：** 通过 npx 按需运行，无需预先安装
+
+**配置步骤：**
+
+1. 编辑项目根目录 `mcp.json`
+
+2. 添加以下配置：
+   ```json
+   {
+     "mcpServers": {
+       "filesystem": {
+         "command": "npx",
+         "args": ["-y", "@modelcontextprotocol/server-filesystem", "<YOUR_PROJECT_PATH>"],
+         "disabled": false
+       }
+     }
+   }
+   ```
+
+3. 替换 `<YOUR_PROJECT_PATH>` 为你的项目路径：
+   - Windows: `D:/Workspace/your-project`
+   - Mac/Linux: `/Users/username/your-project`
+
+4. 保存并重启 Trae/Cursor
+
+**使用示例：**
+```
+# 读取文件
+用户：读取 README.md 的内容
+
+# 列出目录
+用户：列出当前目录的文件
+
+# 写入文件
+用户：在 docs 目录下创建一个新的 API 文档
+```
+
+**安全说明：**
+- ⚠️ 文件读写权限受限，只能访问配置的路径及其子目录
+- ⚠️ 不要将 `mcp.json` 提交到 Git（包含个人路径）
+- ✅ 官方维护，定期更新
+
+**相关链接：**
+- GitHub: https://github.com/modelcontextprotocol/servers
+- npm: https://www.npmjs.com/package/@modelcontextprotocol/server-filesystem
 
 ---
 
@@ -253,8 +317,9 @@ cp mcp.json.example mcp.json
 # 查看状态
 查看当前 Git 状态
 
-# 查看历史
-显示最近 10 次提交
+# 多项目支持
+查看 api 项目的 Git 状态
+列出所有可访问的 Git 项目
 
 # 生成 commit message
 帮我生成 commit message
@@ -286,16 +351,30 @@ cp mcp.json.example mcp.json
 列出所有记忆
 ```
 
+### Filesystem（官方）
+
+```
+# 读取文件
+读取 README.md 的内容
+
+# 列出目录
+列出当前目录的文件
+
+# 搜索文件
+搜索所有 *.py 文件
+```
+
 ---
 
 ## 📚 各 MCP 文档
 
 | MCP | 文档链接 | 说明 |
 | :--- | :--- | :--- |
-| **HTTP Client** | [http-client/README.md](http-client/README.md) | HTTP 请求测试工具 |
-| **Git Client** | [git-client/README.md](git-client/README.md) | Git 版本控制工具 |
-| **Database Client** | [db-client/README.md](db-client/README.md) | 多数据库查询工具 |
-| **Memory Client** | [memory-client/README.md](memory-client/README.md) | 长期记忆存储工具 |
+| **HTTP Client** | [http-client/README.md](http-client/README.md) | HTTP 请求测试工具（自研） |
+| **Git Client** | [git-client/README.md](git-client/README.md) | Git 版本控制工具（自研，支持多项目） |
+| **Database Client** | [db-client/README.md](db-client/README.md) | 多数据库查询工具（自研） |
+| **Memory Client** | [memory-client/README.md](memory-client/README.md) | 长期记忆存储工具（自研） |
+| **Filesystem** | [官方仓库](https://github.com/modelcontextprotocol/servers) | 文件系统工具（官方 npm 包） |
 | **安装指南** | [docs/installation.md](docs/installation.md) | 详细安装步骤 |
 
 ---
@@ -316,6 +395,10 @@ python http-client/http_mcp.py
 ### Q: Git 命令无法执行
 
 **A:** 安装 Git 并添加到系统 PATH。
+
+### Q: Filesystem MCP 无法使用
+
+**A:** 确保 Node.js 已安装，配置正确的项目路径。
 
 ### Q: 中文乱码
 
@@ -360,11 +443,14 @@ git config --global core.quotepath false
 
 本项目采用 [MIT License](LICENSE) 开源协议。
 
+自研模块（HTTP/Git/Database/Memory Client）由本项目作者开发。
+Filesystem MCP 使用官方 npm 包，遵循其原有许可证。
+
 ---
 
 ## 📞 联系方式
 
-- 📧 Email: your.locc233@outlook.com
+- 📧 Email: locc233outlook.com
 - 💬 Issues: [GitHub Issues](https://github.com/Black-do/mcp-server-collection/issues)
 
 ---
@@ -374,11 +460,24 @@ git config --global core.quotepath false
 - [Model Context Protocol](https://modelcontextprotocol.io/) - MCP 协议
 - [Trae](https://trae.ai/) - AI 编辑器
 - [Cursor](https://cursor.sh/) - AI 编辑器
+- [Filesystem MCP](https://github.com/modelcontextprotocol/servers) - 官方文件服务器
+
+---
+
+## 📝 更新日志
+
+详见 [CHANGELOG.md](CHANGELOG.md)
+
+### v1.1.0 (2026-04-02)
+- ✨ Git Client 新增多项目支持
+- ✨ 新增 `list_projects` 和 `get_current_branch` 工具
+- 📝 更新文档，突出多项目功能
+
+### v1.0.0 (2026-04-01)
+- 🎉 初始版本发布
+- ✨ HTTP/Git/Database/Memory Client 自研 MCP
+- 🔌 集成官方 Filesystem MCP
 
 ---
 
 **如果这个项目对你有帮助，请给个 ⭐ Star！** 🎉
-
-
-
-

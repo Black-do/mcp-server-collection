@@ -1,7 +1,24 @@
 {
-    "default_project_path": "<YOUR_GIT_PROJECT_PATH>",
-    "max_log_entries": 20,
-    "timeout_seconds": 30,
-    "allowed_commands": ["status", "log", "diff", "branch", "show"],
-    "exclude_patterns": ["*.log", "*.tmp", "node_modules/", "__pycache__/"]
-  }
+  "default_project_path": "<YOUR_DEFAULT_PROJECT_PATH>",
+  "projects": {
+    "main": {
+      "path": "<YOUR_MAIN_PROJECT_PATH>",
+      "name": "主项目",
+      "description": "MCP 服务器集合"
+    },
+    "api": {
+      "path": "<YOUR_API_PROJECT_PATH>",
+      "name": "API 项目",
+      "description": "FastAPI 后端服务"
+    },
+    "web": {
+      "path": "<YOUR_WEB_PROJECT_PATH>",
+      "name": "Web 项目",
+      "description": "前端页面"
+    }
+  },
+  "max_log_entries": 20,
+  "timeout_seconds": 30,
+  "allowed_commands": ["status", "log", "diff", "branch", "show"],
+  "exclude_patterns": ["*.log", "*.tmp", "node_modules/", "__pycache__/"]
+}
